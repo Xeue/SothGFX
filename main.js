@@ -18,7 +18,7 @@ const __main = path.resolve(__dirname, devEnv);
 /* Start App */
 
 (async () => {
-
+    app.commandLine.appendSwitch("disable-gpu");
 	await app.whenReady();
 	await setUpApp();
 	await createWindow();
