@@ -1,0 +1,82 @@
+main,
+iframe,
+section {
+    position: fixed;
+    width: 1920px;
+    height: 1080px;
+    top: 0;
+    left: 0;
+    border: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+section > div {
+    position: fixed;
+}
+
+#bottom {
+    --height: 195px;
+    width: 1920px;
+    height: var(--height);
+    background: white;
+    top: calc(1080px - var(--height));
+}
+
+#right {
+    --width: 345px;
+    width: var(--width);
+    height: 885px;
+    background: #002349;
+    top: 0;
+    left: calc(1920px - var(--width));
+}
+
+#currency {
+    --top: 0px;
+    transition: 0.5s;
+    top: calc(100px + var(--top));
+}
+#info {
+    --top: 0px;
+    transform: scale(var(--scale));
+    width: calc(1942px * (1 / var(--scale)) + 20px);
+    left: calc(((1922px - (1900px * var(--scale))) / -2) - 28px);
+    top: calc(((885px - (885px * var(--scale))) / 2) + 23px + var(--top));
+    transition: 0.5s linear;
+}
+
+#cont {
+    --scale: 0.9;
+}
+
+.drag {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 30px;
+    width: 100%;
+    -webkit-app-region: drag;
+}
+
+.drag:hover {
+    background-color: #002349;
+}
+
+#links {
+    position: fixed;
+    top: 40px;
+    left: 10px;
+    z-index: 1;
+    font-size: 16pt;
+}
+#links button {
+    font-size: inherit;
+}
+
+.linkInput {
+    width: 80rem;
+    font-size: inherit;
+}
