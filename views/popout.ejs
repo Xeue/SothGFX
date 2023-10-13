@@ -10,9 +10,8 @@
     <script type="text/javascript" src="../static/app.js"></script>
     </head>
 
-    <body>
-        <nav class="drag">Sotheby's Viking GFX Renderer</nav>
-        <div id="links" class="card p-4">
+    <body class="popout">
+        <div id="links" class="">
             <div class="d-flex gap-2 mb-2">
                 <button type="button" id="link-stop" class="btn btn-danger">Clear</button>
                 <button type="button" id="window-reset" class="btn btn-primary">Reset Window Size</button>
@@ -21,7 +20,7 @@
                     <button type="button" id="import" class="btn btn-primary">Import</button>
                 </span>
                 <button type="button" id="export" class="btn btn-primary">Export</button>
-                <button type="button" id="popout" class="btn btn-primary">Popout Window</button>
+				<button type="button" id="popout" class="btn btn-primary d-none">Popout</button>
                 <button type="button" id="window-exit" class="btn btn-danger ms-auto">Exit</button>
             </div>
 
@@ -73,14 +72,5 @@
                 <input type="text" class="linkInput form-control" id="link8" placeholder="Link 8">
             </div>
         </div>
-        <main id="cont">
-            <section>
-                <div id="bottom"></div>
-                <div id="right"></div>
-            </section>
-            <iframe id="currency" src=""></iframe>
-            <iframe id="info" src=""></iframe>
-        </main>
     </body>
-
 </html>

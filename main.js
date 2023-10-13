@@ -10,8 +10,8 @@ const __static = __dirname+'/static';
 
 /* Globals */
 
-let isQuiting = false;
 let mainWindow = null;
+let popWindow = null;
 const devEnv = app.isPackaged ? './' : './';
 const __main = path.resolve(__dirname, devEnv);
 
@@ -46,9 +46,23 @@ async function setUpApp() {
 		case 'minimise':
 			mainWindow.hide();
 			break;
+		case 'reset':
+			mainWindow.setSize(1920, 1080);
+			break;
+		case 'popout':
+			createPopoutWindow();
+			break;
 		default:
 			break;
 		}
+	});
+
+	ipcMain.on('link', (event, link) => {
+		mainWindow.webContents.send('setLink', link);
+	});
+
+	ipcMain.on('clear', () => {
+		mainWindow.webContents.send('doClear');
 	});
 
 	app.on('before-quit', function () {
@@ -61,14 +75,15 @@ async function setUpApp() {
 }
 
 async function createWindow() {
-	const windowOptions = {
+    mainWindow = new BrowserWindow({
 		width: 1920,
 		height: 1080,
 		autoHideMenuBar: true,
 		webPreferences: {
-			contextIsolation: true
+			contextIsolation: true,
+			preload: path.resolve(__main, 'preload.js')
 		},
-		icon: path.join(__static, 'img/icon/icon.png'),
+		icon: path.join(__static, 'icon.ico'),
 		show: false,
 		frame: false,
 		titleBarStyle: 'hidden',
@@ -78,8 +93,7 @@ async function createWindow() {
 			height: 56
 		}
 	}
-	
-    mainWindow = new BrowserWindow(windowOptions);
+	);
 
 	if (!app.commandLine.hasSwitch('hidden')) {
 		mainWindow.show();
@@ -87,11 +101,29 @@ async function createWindow() {
 		mainWindow.hide();
 	}
 
-	mainWindow.on('close', function (event) {
-	});
-
-	mainWindow.on('minimize', function (event) {
-	});
-
 	mainWindow.loadURL(path.resolve(__main, 'views/app.ejs'));
+}
+
+async function createPopoutWindow() {
+    popWindow = new BrowserWindow({
+		width: 1450,
+		height: 500,
+		autoHideMenuBar: true,
+		webPreferences: {
+			contextIsolation: true,
+			preload: path.resolve(__main, 'preload.js')
+		},
+		icon: path.join(__static, 'icon.ico'),
+		show: false,
+		frame: true
+	}
+	);
+
+	if (!app.commandLine.hasSwitch('hidden')) {
+		popWindow.show();
+	} else {
+		popWindow.hide();
+	}
+
+	popWindow.loadURL(path.resolve(__main, 'views/popout.ejs'));
 }

@@ -1,6 +1,6 @@
 {
   "name": "sothgfx",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Exlectron App for Sothebys Viking GFX",
   "main": "main.js",
   "dependencies": {

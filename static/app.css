@@ -7,6 +7,7 @@ section {
     top: 0;
     left: 0;
     border: none;
+    color-scheme: none;
 }
 
 .hidden {
@@ -59,6 +60,11 @@ section > div {
     height: 30px;
     width: 100%;
     -webkit-app-region: drag;
+    background: #808080;
+    cursor: move;
+    color: white;
+    padding-left: 10px;
+    padding-top: 3px;
 }
 
 .drag:hover {
@@ -70,13 +76,28 @@ section > div {
     top: 40px;
     left: 10px;
     z-index: 1;
-    font-size: 16pt;
-}
-#links button {
-    font-size: inherit;
 }
 
 .linkInput {
-    width: 80rem;
-    font-size: inherit;
+    width: 70rem !important;
+}
+
+body {
+    background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #ffffff !important;
+}
+
+.linkActive {
+    background-color: #1987544a !important;
+}
+
+.popout {
+    background: white;
+}
+
+.popout #links {
+    position: unset;
+    padding: 1rem;
 }
