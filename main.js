@@ -52,6 +52,13 @@ async function setUpApp() {
 		case 'popout':
 			createPopoutWindow();
 			break;
+		case 'hide':
+			if (mainWindow.getOpacity() == 0) {
+				mainWindow.setOpacity(1);
+			} else {
+				mainWindow.setOpacity(0);
+			}
+			break;
 		default:
 			break;
 		}
@@ -91,7 +98,8 @@ async function createWindow() {
 			color: '#002349',
 			symbolColor: '#002349',
 			height: 56
-		}
+		},
+		opacity: 1
 	}
 	);
 
@@ -102,6 +110,7 @@ async function createWindow() {
 	}
 
 	mainWindow.loadURL(path.resolve(__main, 'views/app.ejs'));
+	createPopoutWindow();
 }
 
 async function createPopoutWindow() {

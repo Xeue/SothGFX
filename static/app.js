@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.electronAPI.window('popout');
 	})
 
+	document.getElementById('hide').addEventListener('click', event => {
+		window.electronAPI.window('hide');
+	})
+
 	document.getElementById('import').addEventListener('click', event => {
 		const files = document.getElementById('formFile').files;
 		const reader = new FileReader();
