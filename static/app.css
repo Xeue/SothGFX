@@ -39,6 +39,8 @@ section > div {
     --top: 0px;
     transition: 0.5s;
     top: calc(100px + var(--top));
+    opacity: 1;
+    transition: 0.5s;
 }
 #info {
     --top: 0px;
@@ -60,9 +62,10 @@ section > div {
     height: 30px;
     width: 100%;
     -webkit-app-region: drag;
-    background: #808080;
+    /*background: #808080;
     cursor: move;
-    color: white;
+    color: white;*/
+    color: transparent;
     padding-left: 10px;
     padding-top: 3px;
 }
@@ -100,4 +103,29 @@ body {
 .popout #links {
     position: unset;
     padding: 1rem;
+}
+
+#sothLogo {
+    width: 100%;
+    padding: 2rem;
+}
+
+#sponsor {
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#sponsorText {
+    padding-block: 2rem;
+    font-size: 169%;
+}
+
+.sponsor #sponsor {
+    opacity: 1;
+}
+
+.sponsor #currency {
+    opacity: 0;
 }

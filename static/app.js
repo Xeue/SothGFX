@@ -1,3 +1,5 @@
+const sponsorTime = 5;
+
 document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('window-reset').addEventListener('click', event => {
 		window.electronAPI.window('reset');
@@ -75,6 +77,27 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.getElementById('info').setAttribute('src', '');
 		clearActive();
 	});
+
+	window.electronAPI.doSponsor(() => {
+		document.getElementById('cont').classList.add('sponsor');
+		setTimeout(()=>{
+			document.getElementById('cont').classList.remove('sponsor');
+		}, 6*1000)
+	});
+
+	if (popout) {
+		const timer = document.getElementById('sponsorTime');
+		let time = sponsorTime * 60 * 1000;
+		setInterval(() => {
+			const seconds = Number((time/1000)%60).toFixed(0);
+			timer.innerHTML = `${Math.floor(time/60000).toFixed(0)}:${String(seconds).padStart(2, '0')}`;
+			time -= 1000;
+			if (time < 1) time = sponsorTime * 60 * 1000;
+		}, 1000);
+		setInterval(() => {
+			window.electronAPI.sponsor();
+		}, sponsorTime * 60 * 1000)
+	};
 })
 
 function setLink(index) {

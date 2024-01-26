@@ -72,6 +72,10 @@ async function setUpApp() {
 		mainWindow.webContents.send('doClear');
 	});
 
+	ipcMain.on('sponsor', () => {
+		mainWindow.webContents.send('doSponsor');
+	});
+
 	app.on('before-quit', function () {
 		isQuiting = true;
 	});
@@ -94,11 +98,7 @@ async function createWindow() {
 		show: false,
 		frame: false,
 		titleBarStyle: 'hidden',
-		titleBarOverlay: {
-			color: '#002349',
-			symbolColor: '#002349',
-			height: 56
-		},
+		titleBarOverlay: false,
 		opacity: 1
 	}
 	);

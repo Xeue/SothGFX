@@ -5,5 +5,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 	link: message => ipcRenderer.send('link', message),
 	clear: message => ipcRenderer.send('clear', message),
 	setLink: (callback) => ipcRenderer.on('setLink', callback),
-	doClear: (callback) => ipcRenderer.on('doClear', callback)
+	doClear: (callback) => ipcRenderer.on('doClear', callback),
+	sponsor: message => ipcRenderer.send('sponsor', message),
+	doSponsor: (callback) => ipcRenderer.on('doSponsor', callback)
 });
