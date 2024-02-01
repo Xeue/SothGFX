@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <title>Sotherbys Viking GFX</title>
+    <link rel="stylesheet" href="../static/app.css">
+    <script src="../static/webcg-framework.umd.js"></script>
+    <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('link-stop').addEventListener('click', event => {
+                document.getElementById('currency').setAttribute('src', '')
+                document.getElementById('info').setAttribute('src', '')
+            })
+
+            document.getElementById('link1-but').addEventListener('click', event => {
+                setLink(document.getElementById('link1').value);
+            })
+            document.getElementById('link2-but').addEventListener('click', event => {
+                setLink(document.getElementById('link2').value);
+            })
+            document.getElementById('link3-but').addEventListener('click', event => {
+                setLink(document.getElementById('link3').value);
+            })
+            document.getElementById('link4-but').addEventListener('click', event => {
+                setLink(document.getElementById('link4').value);
+            })
+            document.getElementById('link5-but').addEventListener('click', event => {
+                setLink(document.getElementById('link5').value);
+            })
+            document.getElementById('link6-but').addEventListener('click', event => {
+                setLink(document.getElementById('link6').value);
+            })
+            document.getElementById('link7-but').addEventListener('click', event => {
+                setLink(document.getElementById('link7').value);
+            })
+            document.getElementById('link8-but').addEventListener('click', event => {
+                setLink(document.getElementById('link8').value);
+            })
+
+        })
+        function setLink(rawLink) {
+            const link = rawLink.replace('/currency', '');
+            document.getElementById('currency').setAttribute('src', link+"/currency");
+            document.getElementById('info').setAttribute('src', link);
+        }
+    </script>
+    </head>
+
+    <body>
+        <nav class="drag"></nav>
+        <main id="cont">
+            <div id="links">
+                <div>
+                    <input type="text" class="linkInput" id="link1" placeholder="Link 1">
+                    <button type="button" id="link1-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link2" placeholder="Link 2">
+                    <button type="button" id="link2-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link3" placeholder="Link 3">
+                    <button type="button" id="link3-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link4" placeholder="Link 4">
+                    <button type="button" id="link4-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link5" placeholder="Link 5">
+                    <button type="button" id="link5-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link6" placeholder="Link 6">
+                    <button type="button" id="link6-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link7" placeholder="Link 7">
+                    <button type="button" id="link7-but">Push</button>
+                </div>
+                <div>
+                    <input type="text" class="linkInput" id="link8" placeholder="Link 8">
+                    <button type="button" id="link8-but">Push</button>
+                </div>
+                <button type="button" id="link-stop">Clear</button>
+            </div>
+        </main>
+    </body>
+
+</html>

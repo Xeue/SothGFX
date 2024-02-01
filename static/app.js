@@ -92,11 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			const seconds = Number((time/1000)%60).toFixed(0);
 			timer.innerHTML = `${Math.floor(time/60000).toFixed(0)}:${String(seconds).padStart(2, '0')}`;
 			time -= 1000;
-			if (time < 1) time = sponsorTime * 60 * 1000;
+			if (time < 1) {
+				window.electronAPI.sponsor();
+				time = sponsorTime * 60 * 1000;
+			}
 		}, 1000);
-		setInterval(() => {
-			window.electronAPI.sponsor();
-		}, sponsorTime * 60 * 1000)
+		//setInterval(() => {
+		//	window.electronAPI.sponsor();
+		//}, sponsorTime * 60 * 1000)
+
+		document.getElementById('sponsorNow').addEventListener('click', event => {
+			time = 2000;
+		})
 	};
 })
 
